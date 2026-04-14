@@ -284,3 +284,62 @@ class ConferenceBooking(Document):
 
 
 
+@frappe.whitelist()
+@frappe.validate_and_sanitize_search_inputs
+def get_available_rooms(doctype, txt, searchfield, start, page_len, filters):
+    booking_date = filters.get("booking_date")
+    start_time = filters.get("start_time")
+    end_time = filters.get("end_time")
+    full_day = frappe.utils.cint(filters.get("full_day"))
+    current_booking = filters.get("current_booking")
+
+    if not booking_date:
+        return []
+
+    # 1. Identify occupied rooms for the given slot
+    occupied_rooms_query = """
+        SELECT DISTINCT conference_room
+        FROM `tabConference Booking`
+        WHERE
+            booking_date = %s
+            AND status IN ('Confirmed', 'Reserved','Completed')
+            AND name != %s
+            AND (
+                full_day = 1
+                OR %s = 1
+                OR (
+                    start_time < %s
+                    AND end_time > %s
+                )
+            )
+    """
+
+    # If full_day is current selection, we check against ANY booking
+    # Otherwise we check against full_day bookings OR overlapping time bookings
+    check_start = end_time if not full_day else "23:59:59"
+    check_end = start_time if not full_day else "00:00:00"
+
+    occupied_rooms = frappe.db.sql(occupied_rooms_query, (
+        booking_date,
+        current_booking or "",
+        full_day,
+        check_start,
+        check_end
+    ), as_dict=True)
+
+    occupied_room_names = [d.conference_room for d in occupied_rooms]
+
+    # 2. Get all active rooms that are NOT in the occupied list
+    rooms_filter = {"is_active": 1}
+    if txt:
+        rooms_filter["name"] = ["like", f"%{txt}%"]
+    
+    if occupied_room_names:
+        rooms_filter["name"] = ["not in", occupied_room_names]
+
+    return frappe.get_all(
+        "Conference Room",
+        filters=rooms_filter,
+        fields=["name", "room_name"],
+        as_list=True
+    )

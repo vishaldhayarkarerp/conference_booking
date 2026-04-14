@@ -1,168 +1,168 @@
 {
- "actions": [],
- "allow_rename": 1,
- "autoname": "CONF-BOOK-.YYYY.-.#####",
- "creation": "2026-01-16 12:56:51.900592",
- "doctype": "DocType",
- "engine": "InnoDB",
- "field_order": [
-  "booking_date",
-  "conference_room",
-  "meeting_title",
-  "group_name",
-  "client_name",
-  "meeting_type",
-  "booked_by",
-  "full_day",
-  "column_break_idkb",
-  "start_time",
-  "end_time",
-  "status",
-  "remarks",
-  "cancellation_reason"
- ],
- "fields": [
-  {
-   "fieldname": "booking_date",
-   "fieldtype": "Date",
-   "in_list_view": 1,
-   "label": "Booking Date",
-   "reqd": 1
-  },
-  {
-   "fieldname": "conference_room",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "Conference Room",
-   "options": "Conference Room",
-   "reqd": 1
-  },
-  {
-   "fieldname": "meeting_title",
-   "fieldtype": "Data",
-   "label": "Meeting Title"
-  },
-  {
-   "fieldname": "group_name",
-   "fieldtype": "Data",
-   "label": "Group Name"
-  },
-  {
-   "fieldname": "client_name",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "Client Name",
-   "options": "Customer",
-   "reqd": 1
-  },
-  {
-   "fieldname": "meeting_type",
-   "fieldtype": "Select",
-   "label": "Meeting Type",
-   "options": "Offline\nOnline\nHybrid\nInternal\nClient Visit",
-   "reqd": 1
-  },
-  {
-   "fieldname": "booked_by",
-   "fieldtype": "Link",
-   "label": "Booked By",
-   "options": "User",
-   "reqd": 1
-  },
-  {
-   "default": "0",
-   "fieldname": "full_day",
-   "fieldtype": "Check",
-   "in_list_view": 1,
-   "label": "Full Day"
-  },
-  {
-   "fieldname": "column_break_idkb",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "start_time",
-   "fieldtype": "Time",
-   "label": "Start Time",
-   "reqd": 1
-  },
-  {
-   "fieldname": "end_time",
-   "fieldtype": "Time",
-   "label": "End Time",
-   "reqd": 1
-  },
-  {
-   "fieldname": "status",
-   "fieldtype": "Select",
-   "in_list_view": 1,
-   "label": "Status",
-   "options": "Draft\nConfirmed\nCancelled\nCompleted\nReserved",
-   "reqd": 1
-  },
-  {
-   "fieldname": "remarks",
-   "fieldtype": "Small Text",
-   "label": "Remarks"
-  },
-  {
-   "depends_on": "eval:doc.status == \"Cancelled\"",
-   "fieldname": "cancellation_reason",
-   "fieldtype": "Small Text",
-   "in_list_view": 1,
-   "label": "Cancellation Reason"
-  }
- ],
- "grid_page_length": 50,
- "index_web_pages_for_search": 1,
- "is_calendar_and_gantt": 1,
- "links": [],
- "modified": "2026-01-19 17:56:08.300896",
- "modified_by": "Administrator",
- "module": "Conference Room Booking",
- "name": "Conference Booking",
- "naming_rule": "Expression",
- "owner": "Administrator",
- "permissions": [
-  {
-   "create": 1,
-   "delete": 1,
-   "email": 1,
-   "export": 1,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "System Manager",
-   "share": 1,
-   "write": 1
-  },
-  {
-   "create": 1,
-   "email": 1,
-   "export": 1,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "Sales User",
-   "share": 1,
-   "write": 1
-  },
-  {
-   "create": 1,
-   "email": 1,
-   "export": 1,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "Sales Manager",
-   "share": 1,
-   "write": 1
-  }
- ],
- "row_format": "Dynamic",
- "rows_threshold_for_grid_search": 20,
- "sort_field": "modified",
- "sort_order": "DESC",
- "states": [],
- "track_changes": 1
+    "actions": [],
+    "allow_rename": 1,
+    "autoname": "CONF-BOOK-.YYYY.-.#####",
+    "creation": "2026-01-16 12:56:51.900592",
+    "doctype": "DocType",
+    "engine": "InnoDB",
+    "field_order": [
+        "booking_date",
+        "start_time",
+        "end_time",
+        "full_day",
+        "column_break_idkb",
+        "conference_room",
+        "status",
+        "meeting_title",
+        "group_name",
+        "client_name",
+        "meeting_type",
+        "booked_by",
+        "remarks",
+        "cancellation_reason"
+    ],
+    "fields": [
+        {
+            "fieldname": "booking_date",
+            "fieldtype": "Date",
+            "in_list_view": 1,
+            "label": "Booking Date",
+            "reqd": 1
+        },
+        {
+            "fieldname": "conference_room",
+            "fieldtype": "Link",
+            "in_list_view": 1,
+            "label": "Conference Room",
+            "options": "Conference Room",
+            "reqd": 1
+        },
+        {
+            "fieldname": "meeting_title",
+            "fieldtype": "Data",
+            "label": "Meeting Title"
+        },
+        {
+            "fieldname": "group_name",
+            "fieldtype": "Data",
+            "label": "Group Name"
+        },
+        {
+            "fieldname": "client_name",
+            "fieldtype": "Link",
+            "in_list_view": 1,
+            "label": "Client Name",
+            "options": "Customer",
+            "reqd": 1
+        },
+        {
+            "fieldname": "meeting_type",
+            "fieldtype": "Select",
+            "label": "Meeting Type",
+            "options": "Offline\nOnline\nHybrid\nInternal\nClient Visit",
+            "reqd": 1
+        },
+        {
+            "fieldname": "booked_by",
+            "fieldtype": "Link",
+            "label": "Booked By",
+            "options": "User",
+            "reqd": 1
+        },
+        {
+            "default": "0",
+            "fieldname": "full_day",
+            "fieldtype": "Check",
+            "in_list_view": 1,
+            "label": "Full Day"
+        },
+        {
+            "fieldname": "column_break_idkb",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "start_time",
+            "fieldtype": "Time",
+            "label": "Start Time",
+            "reqd": 1
+        },
+        {
+            "fieldname": "end_time",
+            "fieldtype": "Time",
+            "label": "End Time",
+            "reqd": 1
+        },
+        {
+            "fieldname": "status",
+            "fieldtype": "Select",
+            "in_list_view": 1,
+            "label": "Status",
+            "options": "Draft\nConfirmed\nCancelled\nCompleted\nReserved",
+            "reqd": 1
+        },
+        {
+            "fieldname": "remarks",
+            "fieldtype": "Small Text",
+            "label": "Remarks"
+        },
+        {
+            "depends_on": "eval:doc.status == \"Cancelled\"",
+            "fieldname": "cancellation_reason",
+            "fieldtype": "Small Text",
+            "in_list_view": 1,
+            "label": "Cancellation Reason"
+        }
+    ],
+    "grid_page_length": 50,
+    "index_web_pages_for_search": 1,
+    "is_calendar_and_gantt": 1,
+    "links": [],
+    "modified": "2026-01-19 17:56:08.300896",
+    "modified_by": "Administrator",
+    "module": "Conference Room Booking",
+    "name": "Conference Booking",
+    "naming_rule": "Expression",
+    "owner": "Administrator",
+    "permissions": [
+        {
+            "create": 1,
+            "delete": 1,
+            "email": 1,
+            "export": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "System Manager",
+            "share": 1,
+            "write": 1
+        },
+        {
+            "create": 1,
+            "email": 1,
+            "export": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "Sales User",
+            "share": 1,
+            "write": 1
+        },
+        {
+            "create": 1,
+            "email": 1,
+            "export": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "Sales Manager",
+            "share": 1,
+            "write": 1
+        }
+    ],
+    "row_format": "Dynamic",
+    "rows_threshold_for_grid_search": 20,
+    "sort_field": "modified",
+    "sort_order": "DESC",
+    "states": [],
+    "track_changes": 1
 }
